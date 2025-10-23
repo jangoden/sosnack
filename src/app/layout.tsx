@@ -1,10 +1,14 @@
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import './globals.css';
-import { Toaster } from '@/components/ui/toaster';
+import { Navbar } from '@/components/core/navbar';
+import { Footer } from '@/components/core/footer';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'SOSNACK',
-  description: 'SOSNACK - #CemilanKalcer #AnytimeAnywhere',
+  title: 'SoSnack - Cemilan Kalcer',
+  description: 'Local Pride with Modern Style',
 };
 
 export default function RootLayout({
@@ -13,15 +17,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
-      </head>
-      <body className="font-body antialiased">
-        {children}
-        <Toaster />
+    <html lang="en" className="scroll-pt-[var(--header-h)] scroll-smooth">
+      <body className={inter.className}>
+        <div className="relative flex min-h-dvh flex-col">
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

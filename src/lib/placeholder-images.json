@@ -35,6 +35,12 @@
       "description": "Spicy and crunchy macaroni, an addictive favorite.",
       "imageUrl": "https://images.unsplash.com/photo-1574636573716-062c8c8c6179?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzcGljeSUyMG1hY2Fyb25pfGVufDB8fHx8MTc2MTIwMTIwMHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "spicy macaroni"
+    },
+    {
+      "id": "hero-person",
+      "description": "A young person enjoying a snack, representing the target audience.",
+      "imageUrl": "https://images.unsplash.com/photo-1593642532781-03e5cb29b882?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMHBlcnNvbiUyMGVhdGluZyUyMHNuYWNrfGVufDB8fHx8MTcwMTY3NjgwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "young person eating snack"
     }
   ]
 }
