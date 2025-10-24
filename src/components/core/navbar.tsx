@@ -50,9 +50,7 @@ export function Navbar() {
     <header
       className={cn(
         'fixed inset-x-0 top-0 z-50 h-20 transition-all duration-300', // Menggunakan h-20
-        scrolled
-          ? 'bg-background/95 backdrop-blur shadow-md border-b' // Style dari kode lama Anda saat scrolled
-          : 'bg-transparent' // Transparan di atas hero
+        'bg-gradient-to-r from-background/80 via-background to-background/90 shadow-lg backdrop-blur-sm' // Glossy gradient using background color for contrast
       )}
     >
       <div className="container mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6">

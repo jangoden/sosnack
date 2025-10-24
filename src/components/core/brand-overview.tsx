@@ -1,35 +1,37 @@
 'use client';
 
 import { Badge } from '@/components/ui/badge';
-import { Card } from '@/components/ui/card';
-import { motion } from 'framer-motion';
+import { Card } from '@/components/ui/card'; // Kita gunakan Card bawaan
+import { motion, Variants } from 'framer-motion'; // Tambahkan Variants di sini
 import { Leaf, Sparkles, ShieldCheck, Award } from 'lucide-react';
+import { cn } from '@/lib/utils'; // Import cn
 
-// Mengganti emoji dengan ikon Lucide untuk tampilan profesional
+// Fitur tetap sama
 const features = [
   {
     icon: Leaf,
     title: 'Autentik Lokal',
-    description: 'Rasa khas Indonesia, gurih & pedas pas.',
+    description: 'Rasa khas Indonesia, dibuat dari bahan pilihan.',
+    // Hapus colorClass, warna ikon akan diatur via hover card
   },
   {
     icon: Sparkles,
     title: 'Kekinian & Stylish',
-    description: 'Desain kemasan modern, cocok buat Gen Z.',
+    description: 'Desain kemasan modern, pas buat gaya Gen Z.',
   },
   {
     icon: ShieldCheck,
     title: 'Praktis & Higienis',
-    description: 'Double seal, aman, awet dibawa ke mana aja.',
+    description: 'Double seal menjaga kerenyahan, aman dibawa.',
   },
   {
     icon: Award,
     title: 'Halal & Terpercaya',
-    description: 'Sudah bersertifikat halal resmi.',
+    description: 'Sudah bersertifikat Halal MUI, tanpa ragu.',
   },
 ];
 
-// Varian animasi untuk 'fade-in-up'
+// Varian animasi tetap sama
 const FADE_IN_UP_VARIANT = {
   hidden: { opacity: 0, y: 30 },
   visible: {
@@ -41,9 +43,9 @@ const FADE_IN_UP_VARIANT = {
 
 export function BrandOverview() {
   return (
-    // Menggunakan bg-background untuk konsistensi, bukan bg-blue-50
-    <section className="relative w-full py-24 md:py-32 bg-background overflow-hidden">
-      {/* Menambahkan noise texture yang konsisten */}
+    // Background section tetap sama
+    <section className="relative w-full py-16 md:py-20 bg-gradient-to-b from-background to-blue-50/30 overflow-hidden">
+      {/* Noise texture */}
       <div
         aria-hidden
         className="absolute inset-0 -z-10 opacity-[0.03]"
@@ -52,9 +54,13 @@ export function BrandOverview() {
             "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>\")",
         }}
       />
+      {/* Blob shape background */}
+      <div aria-hidden="true" className="absolute inset-x-0 top-1/2 -translate-y-1/2 -z-20 opacity-30">
+        <div className="absolute left-[calc(50%+14rem)] top-1/2 -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[60rem] rounded-full bg-gradient-radial from-accent/30 to-transparent blur-3xl"/>
+      </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Bagian Judul dengan Animasi */}
+        {/* Bagian Judul (Tetap sama) */}
         <motion.div
           className="text-center max-w-2xl mx-auto"
           initial="hidden"
@@ -62,50 +68,77 @@ export function BrandOverview() {
           viewport={{ once: true, amount: 0.5 }}
           variants={FADE_IN_UP_VARIANT}
         >
-          {/* Menggunakan Badge 'secondary' yang lebih modern */}
           <Badge
             variant="secondary"
             className="bg-secondary text-sm font-medium"
           >
-            Brand Overview
+            Kenapa SoSnack?
           </Badge>
-          {/* Tipografi yang Ditingkatkan */}
           <h2 className="mt-4 text-3xl font-bold font-headline tracking-tighter sm:text-4xl md:text-5xl text-primary">
-            Kenapa Pilih SoSnack?
+            Lebih dari Sekadar Camilan.
           </h2>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground">
-            Kami lebih dari sekadar camilan. Kami adalah teman di setiap momen,
-            membawa rasa lokal dengan gaya modern.
+            Kami bawa rasa lokal dengan gaya modern. Ini yang bikin SoSnack
+            spesial buat kamu.
           </p>
         </motion.div>
 
-        {/* Grid Fitur dengan Animasi Stagger (muncul satu per satu) */}
+        {/* Grid Fitur (Kartu dengan Animasi Warna Baru) */}
         <motion.div
           className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ staggerChildren: 0.1 }} // Kunci animasi "stagger"
+          transition={{ staggerChildren: 0.1 }}
         >
           {features.map((feature) => (
-            // Setiap kartu akan menganimasi FADE_IN_UP_VARIANT
-            <motion.div key={feature.title} variants={FADE_IN_UP_VARIANT}>
-              {/* Menggunakan Kartu Premium */}
+            <motion.div
+              key={feature.title}
+              variants={FADE_IN_UP_VARIANT}
+              className="h-full group" // Tambahkan 'group' di sini
+            >
+              {/*
+                PERUBAHAN UTAMA ADA DI className Card INI:
+                - Tambah: transition-colors duration-300 group-hover:bg-primary
+                - Ubah warna teks saat hover: group-hover:text-primary-foreground
+                - Ubah warna deskripsi saat hover: group-hover:text-primary-foreground/80
+                - Hapus backdrop-blur saat hover (opsional, agar warna solid)
+              */}
               <Card
-                className="p-6 h-full flex flex-col items-center text-center bg-card/80 backdrop-blur-sm
-                           border border-border/50 transition-all duration-300
-                           hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10"
+                className={cn(
+                  "relative h-full flex flex-col items-center text-center p-6 md:p-8",
+                  "bg-card/70 backdrop-blur-lg border border-border/30 rounded-xl shadow-sm",
+                  "transition-colors duration-300 ease-in-out", // Transisi warna
+                  "group-hover:bg-primary group-hover:backdrop-blur-none", // Warna background jadi primary saat hover
+                  "hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-1" // Efek hover lainnya
+                )}
               >
-                {/* Ikon yang distyling */}
-                <div className="p-3 bg-primary/10 rounded-full w-fit">
-                  <feature.icon className="h-7 w-7 text-primary" />
+                {/* Ikon: Ubah warna background dan ikon saat hover */}
+                <div className={cn(
+                  "relative z-10 p-3 rounded-full mb-5 w-fit",
+                  "bg-primary/10 text-primary", // Warna default
+                  "transition-colors duration-300 ease-in-out",
+                  "group-hover:bg-white/20 group-hover:text-white" // Warna saat card hover
+                )}>
+                  <feature.icon className="h-7 w-7 transition-transform duration-300 group-hover:scale-110" />
                 </div>
-                <h3 className="mt-5 text-xl font-semibold text-foreground">
-                  {feature.title}
-                </h3>
-                <p className="mt-2 text-base text-muted-foreground">
-                  {feature.description}
-                </p>
+                {/* Teks: Ubah warna teks saat hover */}
+                <div className="relative z-10">
+                  <h3 className={cn(
+                    "text-xl font-semibold font-headline text-foreground",
+                    "transition-colors duration-300 ease-in-out",
+                    "group-hover:text-primary-foreground" // Warna judul saat card hover
+                  )}>
+                    {feature.title}
+                  </h3>
+                  <p className={cn(
+                    "mt-2 text-base text-muted-foreground",
+                    "transition-colors duration-300 ease-in-out",
+                    "group-hover:text-primary-foreground/80" // Warna deskripsi saat card hover
+                  )}>
+                    {feature.description}
+                  </p>
+                </div>
               </Card>
             </motion.div>
           ))}

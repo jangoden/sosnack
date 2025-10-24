@@ -2,7 +2,7 @@
 
 ## Core Features:
 
-- Hero Section with Tagline & CTAs: A landing page featuring the tagline #CemilanKalcer #AnytimeAnywhere and calls-to-action 'Order Now' and 'Join Reseller'.
+- Hero Section with Tagline & CTAs: A landing page featuring the tagline #SnackBiru #AnytimeAnywhere and calls-to-action 'Order Now' and 'Join Reseller'.
 - About Section: Display a brief story and mission statement of So Snack, highlighting the brand's youthful energy and authentic flavors.
 - Product Showcase: Showcase Basreng, Mie Gulung, Keripik Kaca, Seblak, and other snacks, highlighting unique flavors.
 - Brand Values Display: Explain why customers should choose So Snack, emphasizing halal certification, hygienic production, and modern packaging.

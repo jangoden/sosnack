@@ -7,7 +7,7 @@ import { Footer } from '@/components/core/footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'SoSnack - Cemilan Kalcer',
+  title: 'SoSnack - Snack Biru',
   description: 'Local Pride with Modern Style',
 };
 

@@ -2,9 +2,10 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Instagram, Facebook, Phone } from 'lucide-react'; // Ikon untuk sosial & kontak
+import { Instagram, Facebook, Phone } from 'lucide-react';
+import { cn } from '@/lib/utils'; // Import cn
 
-// Komponen helper untuk styling link footer (versi gelap)
+// Komponen helper link (sedikit penyesuaian warna)
 function FooterLink({
   href,
   children,
@@ -15,15 +16,15 @@ function FooterLink({
   return (
     <Link
       href={href}
-      // Teks diubah menjadi abu-abu terang, hover menjadi putih
-      className="text-gray-400 transition-colors hover:text-white"
+      // Warna lebih soft, hover lebih cerah
+      className="text-slate-400 transition-colors duration-200 hover:text-slate-100"
     >
       {children}
     </Link>
   );
 }
 
-// Komponen helper untuk tautan marketplace (versi gelap)
+// Komponen helper MarketLink (penyesuaian warna)
 function MarketLink({
   href,
   children,
@@ -36,8 +37,7 @@ function MarketLink({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      // Teks diubah menjadi abu-abu terang, hover menjadi putih
-      className="text-gray-400 transition-colors hover:text-white"
+      className="text-slate-400 transition-colors duration-200 hover:text-slate-100"
     >
       {children}
     </Link>
@@ -45,76 +45,85 @@ function MarketLink({
 }
 
 export function Footer() {
-  // URL dari PDF
   const socials = {
     whatsapp: 'https://wa.me/6282124269410',
     instagram: 'https://www.instagram.com/so.snack_',
-    facebook: 'https://www.facebook.com/SoSnack', // Asumsi dari nama "So Snack"
+    facebook: 'https://www.facebook.com/SoSnack',
   };
-  
+
   const marketplaces = {
-    shopee: 'https://shopee.co.id/sosnack', // Ganti dengan URL Shopee Anda
-    tokopedia: 'https://www.tokopedia.com/sosnack', // Ganti dengan URL Tokopedia Anda
-    lazada: 'https://www.lazada.co.id/shop/sosnack', // Ganti dengan URL Lazada Anda
-    tiktok: 'https://www.tiktok.com/@sosnackid/shop', // Ganti dengan URL TikTok Shop Anda
+    shopee: 'https://shopee.co.id/sosnack',
+    tokopedia: 'https://www.tokopedia.com/sosnack',
+    lazada: 'https://www.lazada.co.id/shop/sosnack',
+    tiktok: 'https://www.tiktok.com/@sosnackid/shop',
   };
 
   return (
-    // Mengganti bg-background dengan bg-gray-900 dan border gelap
-    <footer className="border-t border-gray-800 bg-gray-900">
+    // Background lebih soft (slate-900), border atas primary
+    <footer className="border-t-2 border-primary/50 bg-slate-900 text-slate-300">
+       {/* Noise texture for subtle detail */}
+       <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 h-full -z-10 opacity-[0.02]"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>\")",
+        }}
+      />
       <div className="container py-12 md:py-16">
-        {/* Bagian Atas: Grid Link */}
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
+        {/* Grid Link - Tambah gap */}
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-4 lg:grid-cols-5">
           {/* Kolom 1: Brand & Slogan */}
           <div className="col-span-2 lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2">
-              {/* Anda bisa letakkan <Image> logo di sini jika mau */}
-              {/* text-primary (biru) akan terlihat bagus di bg gelap */}
-              <span className="font-headline text-2xl font-bold text-primary">
-                SoSnack
-              </span>
+            <Link href="/" className="flex items-center gap-3"> {/* Tambah gap */}
+              <Image
+                src="/images/logo.svg"
+                alt="SoSnack Logo"
+                width={36} // Sedikit lebih besar
+                height={36}
+                className="h-9 w-auto"
+                onError={(e) => (e.currentTarget.style.display = 'none')}
+              />
             </Link>
-            {/* Slogan diubah menjadi abu-abu terang */}
-            <p className="mt-4 text-base text-gray-400">
-              #cemilankalcer #anytimeanywhere
+            <p className="mt-4 text-sm text-slate-400 max-w-xs"> {/* Ukuran font, warna, max-width */}
+              Camilan lokal Ciamis dengan cita rasa otentik dan kemasan modern. 
+              #SnackBiru #anytimeanywhere
             </p>
           </div>
 
           {/* Kolom 2: Jelajahi */}
-          <div className="space-y-3">
-            {/* Judul diubah menjadi abu-abu sangat terang */}
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-200">
+          <div className="space-y-4"> {/* Tambah space-y */}
+            {/* Judul lebih bold, warna cerah */}
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-200">
               Jelajahi
             </h3>
-            <nav className="flex flex-col space-y-2">
+            <nav className="flex flex-col space-y-2.5"> {/* Tambah space-y */}
               <FooterLink href="/">Home</FooterLink>
-              <FooterLink href="/about">About</FooterLink>
-              <FooterLink href="/products">Products</FooterLink>
-              {/* DIPERBAIKI: </LoopLink> menjadi </FooterLink> */}
-              <FooterLink href="/values">Values</FooterLink>
+              <FooterLink href="/about">Tentang Kami</FooterLink> {/* Ganti nama? */}
+              <FooterLink href="/products">Produk</FooterLink>
+              <FooterLink href="/values">Nilai Kami</FooterLink>
             </nav>
           </div>
 
           {/* Kolom 3: Kemitraan */}
-          <div className="space-y-3">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-200">
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-200">
               Kemitraan
             </h3>
-            <nav className="flex flex-col space-y-2">
-              <FooterLink href="/#reseller">Join Reseller</FooterLink>
-              <FooterLink href="/contact">Contact Us</FooterLink>
+            <nav className="flex flex-col space-y-2.5">
+              <FooterLink href="/contact#reseller">Join Reseller</FooterLink> {/* Anchor link? */}
+              <FooterLink href="/contact">Kontak</FooterLink>
             </nav>
           </div>
 
-          {/* Kolom 4: Belanja Online (dari PDF) */}
-          <div className="space-y-3">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-200">
+          {/* Kolom 4: Belanja Online */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-200">
               Belanja Online
             </h3>
-            <nav className="flex flex-col space-y-2">
+            <nav className="flex flex-col space-y-2.5">
               <MarketLink href={marketplaces.shopee}>Shopee</MarketLink>
               <MarketLink href={marketplaces.tokopedia}>Tokopedia</MarketLink>
-              {/* DIPERBAIKI: marketpMarketLinkaces.lazada menjadi marketplaces.lazada */}
               <MarketLink href={marketplaces.lazada}>Lazada</MarketLink>
               <MarketLink href={marketplaces.tiktok}>TikTok Shop</MarketLink>
             </nav>
@@ -122,22 +131,20 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Bagian Bawah: Copyright & Ikon Sosial */}
-      {/* Border diubah menjadi lebih gelap */}
-      <div className="border-t border-gray-800">
+      {/* Bagian Bawah: Copyright & Ikon Sosial - Border primary */}
+      <div className="border-t border-primary/30">
         <div className="container flex h-16 flex-col items-center justify-between gap-4 sm:flex-row">
-          {/* Copyright diubah menjadi abu-abu lebih gelap/redup */}
-          <p className="text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} SoSnack. All rights reserved.
+          <p className="text-xs text-slate-500"> {/* Font lebih kecil */}
+            &copy; {new Date().getFullYear()} SoSnack Indonesia. All right reserve.
           </p>
-          <div className="flex items-center gap-4">
-            {/* Ikon diubah menjadi abu-abu redup, hover menjadi putih */}
+          <div className="flex items-center gap-5"> {/* Tambah gap ikon */}
+            {/* Ikon dengan hover effect */}
             <Link
               href={socials.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp SoSnack"
-              className="text-gray-500 transition-colors hover:text-white"
+              className="text-slate-500 transition-colors duration-200 hover:text-primary"
             >
               <Phone className="h-5 w-5" />
             </Link>
@@ -146,7 +153,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram SoSnack"
-              className="text-gray-500 transition-colors hover:text-white"
+              className="text-slate-500 transition-colors duration-200 hover:text-primary"
             >
               <Instagram className="h-5 w-5" />
             </Link>
@@ -155,7 +162,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook SoSnack"
-              className="text-gray-500 transition-colors hover:text-white"
+              className="text-slate-500 transition-colors duration-200 hover:text-primary"
             >
               <Facebook className="h-5 w-5" />
             </Link>

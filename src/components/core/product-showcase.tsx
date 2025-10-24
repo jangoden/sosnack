@@ -4,20 +4,21 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import {
   Card,
-  CardContent,
+  // CardContent, // Tidak perlu CardContent lagi untuk struktur ini
   CardTitle,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react'; // Ikon untuk CTA
+import { motion, Variants } from 'framer-motion'; // Import Variants
+import { ArrowRight } from 'lucide-react';
+import { cn } from '@/lib/utils'; // Import cn
 
-// Produk yang akan ditampilkan
+// Produk yang akan ditampilkan (tetap sama)
 const showcasedProducts = ['basreng', 'mie-gulung', 'keripik-kaca'];
 
-// Varian animasi untuk 'fade-in-up'
-const FADE_IN_UP_VARIANT = {
+// Varian animasi (tetap sama, tambahkan tipe Variants)
+const FADE_IN_UP_VARIANT: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
@@ -32,8 +33,10 @@ export function ProductShowcase() {
   );
 
   return (
-    // Latar belakang konsisten dengan noise texture
-    <section className="relative w-full py-24 md:py-32 bg-background overflow-hidden">
+    // ===== PERUBAHAN BACKGROUND SECTION =====
+    // Ganti bg-background dengan warna lain, misal bg-gradient atau bg-muted/40
+    <section className="relative w-full py-16 md:py-20 bg-gradient-to-b from-blue-50/30 to-background overflow-hidden">
+      {/* Noise texture (tetap ada) */}
       <div
         aria-hidden
         className="absolute inset-0 -z-10 opacity-[0.03]"
@@ -42,8 +45,13 @@ export function ProductShowcase() {
             "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>\")",
         }}
       />
+       {/* Blob shape background - subtle */}
+       <div aria-hidden="true" className="absolute inset-x-0 bottom-0 -z-20 opacity-30">
+        <div className="absolute left-1/4 top-0 -translate-x-1/2 w-[50rem] h-[50rem] rounded-full bg-gradient-radial from-primary/10 to-transparent blur-3xl"/>
+      </div>
+
       <div className="container px-4 md:px-6">
-        {/* Judul Bagian (dengan animasi) */}
+        {/* Judul Bagian (styling diperbarui) */}
         <motion.div
           className="flex flex-col items-center space-y-4 text-center"
           initial="hidden"
@@ -53,80 +61,68 @@ export function ProductShowcase() {
         >
           <div className="space-y-4">
             <Badge
-              variant="secondary"
-              className="bg-secondary text-sm font-medium"
+              variant="default" // Ganti ke variant default (primary)
+              className="bg-primary text-sm font-semibold text-primary-foreground shadow-md"
             >
-              Our Best Sellers
+              Favorit SoSnack
             </Badge>
-            <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl text-primary">
-              Produk Terlaris Kami
+            <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl text-gray-900"> {/* Warna Teks Lebih Gelap */}
+              Wajib Coba!
             </h2>
-            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Dibuat dengan bahan-bahan pilihan dan resep otentik untuk rasa
-              yang tidak terlupakan.
+            <p className="max-w-[700px] text-gray-600 md:text-lg lg:text-base xl:text-lg"> {/* Warna Teks Lebih Gelap */}
+              Ini dia tiga jagoan SoSnack yang paling sering bikin nagih.
+              Rasanya otentik, gayanya kekinian.
             </p>
           </div>
         </motion.div>
 
-        {/* Grid Produk (dengan animasi stagger) */}
+        {/* Grid Produk (Card Baru) */}
         <motion.div
-          className="mx-auto grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 mt-16"
+          className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8 mt-16" // Max-width agar tidak terlalu lebar
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ staggerChildren: 0.1 }} // Kartu muncul satu per satu
+          transition={{ staggerChildren: 0.1 }}
         >
           {products.map((product) => (
-            // Setiap kartu dianimasikan
             <motion.div
               key={product.id}
               variants={FADE_IN_UP_VARIANT}
-              className="h-full"
+              className="group" // Group untuk hover effect
             >
-              {/* KARTU YANG DIDUKUNG LINK & ANIMASI HOVER */}
-              <Link
-                href={`/products#${product.id}`}
-                className="block h-full group" // 'group' penting untuk animasi hover
-              >
+              {/* ===== KARTU PRODUK BARU ===== */}
+              <Link href={`/products#${product.id}`} className="block">
                 <Card
-                  className="h-full overflow-hidden bg-card/80 backdrop-blur-sm 
-                             border border-border/50 transition-all duration-300
-                             hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/50"
+                  className={cn(
+                    "overflow-hidden rounded-xl border border-border/50 bg-card/60 backdrop-blur-md",
+                    "transition-all duration-300 ease-in-out",
+                    "hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 hover:-translate-y-1" // Subtle lift
+                  )}
                 >
-                  {/* Kontainer Gambar dengan Efek Zoom */}
-                  <div className="overflow-hidden h-60">
+                  {/* Gambar (ratio 1:1, efek zoom) */}
+                  <div className="aspect-square overflow-hidden">
                     <Image
                       src={product.imageUrl}
-                      alt={product.description}
-                      width={500}
+                      alt={product.id.replace('-', ' ')} // Alt text lebih simpel
+                      width={400}
                       height={400}
-                      className="object-cover w-full h-full transition-transform duration-300 
-                                 group-hover:scale-105" // <-- EFEK ZOOM
+                      className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
-                  <CardContent className="p-6">
-                    <CardTitle className="capitalize text-2xl font-bold font-headline text-primary">
+                  {/* Judul Produk (di bawah gambar, padding) */}
+                  <div className="p-4 text-center">
+                    <CardTitle className="capitalize text-lg font-semibold font-headline text-foreground group-hover:text-primary transition-colors duration-200">
                       {product.id.replace('-', ' ')}
                     </CardTitle>
-                    <p className="text-muted-foreground mt-2 text-base">
-                      {product.description}
-                    </p>
-                    {/* Link CTA yang Ditingkatkan */}
-                    <div
-                      className="inline-flex items-center gap-1 text-sm font-semibold text-primary mt-4 
-                                 transition-all duration-300 group-hover:gap-2" // <-- Efek panah bergeser
-                    >
-                      Learn More
-                      <ArrowRight className="h-4 w-4" />
-                    </div>
-                  </CardContent>
+                  </div>
                 </Card>
               </Link>
+              {/* ===== AKHIR KARTU PRODUK BARU ===== */}
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Tombol CTA di Bawah */}
+        {/* Tombol CTA di Bawah (Tetap sama) */}
         <motion.div
           className="flex justify-center mt-16"
           initial="hidden"
@@ -137,9 +133,12 @@ export function ProductShowcase() {
           <Button
             asChild
             size="lg"
-            className="font-bold text-base transition-all duration-300 hover:scale-105"
+            className="font-bold text-base transition-all duration-300 hover:scale-105 group bg-primary hover:bg-primary/90" // Style button utama
           >
-            <Link href="/products">Lihat Semua Produk</Link>
+            <Link href="/products">
+              Lihat Semua Varian
+              <ArrowRight className="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
           </Button>
         </motion.div>
       </div>

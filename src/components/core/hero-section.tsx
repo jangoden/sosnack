@@ -16,7 +16,7 @@ const HeroText = ({ variants }: { variants: any }) => (
   >
     <div className="flex justify-center gap-2 sm:justify-start">
       <span className="inline-block rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary/90 sm:px-4 sm:py-1.5 sm:text-sm">
-        #CemilanKalcer
+        #SnackBiru
       </span>
       <span className="inline-block rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary/90 sm:px-4 sm:py-1.5 sm:text-sm">
         #AnytimeAnywhere
@@ -30,8 +30,8 @@ const HeroText = ({ variants }: { variants: any }) => (
     </h1>
 
     <p className="mx-auto mt-6 max-w-xl text-sm leading-6 text-gray-600 sm:mx-0 sm:mt-8 sm:text-lg sm:leading-8">
-      Nikmati camilan kalcer terbaik kapanpun, dimanapun. Sosnack hadir
-      untuk menemani harimu dengan rasa yang otentik dan kualitas premium.
+      So Snack is more than just a local snack it’s a style statement. Made from authentic Indonesian flavors and wrapped in modern, Gen Z-approved packaging, So Snack brings bold taste and bold vibes in every bite.
+      It’s proudly local, effortlessly stylish, and ready to go wherever you go.
     </p>
 
     <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:justify-start">
