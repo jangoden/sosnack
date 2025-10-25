@@ -10,7 +10,7 @@ export const YouTubeVideoSection: React.FC<YouTubeVideoSectionProps> = ({ videoI
       <div className="absolute inset-0 bg-black opacity-50"></div> {/* Overlay for transparency */}
       <div className="relative container mx-auto px-4 z-10">
         <h2 className="text-3xl font-bold text-center mb-8 text-white">
-          Lihat Video Kami
+          Highlight
         </h2>
         <div className="relative w-full max-w-3xl mx-auto aspect-video rounded-lg overflow-hidden shadow-xl border-4 border-gray-200 dark:border-gray-700">
           <iframe

@@ -1,3 +1,4 @@
+import { BannerCarousel } from "@/components/core/banner-carousel";
 import { BrandOverview } from "@/components/core/brand-overview";
 import { HeroSection } from "@/components/core/hero-section";
 import { LogoCarousel } from "@/components/core/logo-carousel";
@@ -8,6 +9,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      <BannerCarousel />
       <BrandOverview />
       <LogoCarousel />
       <ProductShowcase />

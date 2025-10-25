@@ -70,7 +70,7 @@ const HeroText = ({ variants }: { variants: any }) => (
 
 const HeroImage = ({ variants }: { variants: any }) => (
   <motion.div
-    className="relative mx-auto mt-12 flex w-full max-w-[500px] items-center justify-center lg:mt-0"
+    className="relative mx-auto mt-12 flex w-full max-w-[420px] items-center justify-center lg:mt-0"
     variants={variants}
     initial="hidden"
     whileInView="visible"
@@ -137,7 +137,7 @@ export function HeroSection() {
       />
 
       {/* Main Content */}
-      <div className="container relative z-10 mx-auto grid min-h-[60dvh] grid-cols-1 items-center gap-y-10 px-4 pt-20 pb-8 sm:px-6 sm:pt-24 sm:pb-12 lg:grid-cols-2 lg:gap-x-16 lg:px-8 lg:pt-32 lg:pb-16">
+      <div className="container relative z-10 mx-auto grid grid-cols-1 items-center gap-y-10 px-4 pt-20 pb-16 sm:px-6 sm:pt-24 lg:grid-cols-2 lg:items-end lg:gap-x-16 lg:px-8 lg:pt-32">
         
         <HeroText variants={fromLeftVariant} />
         <HeroImage variants={fromRightVariant} />

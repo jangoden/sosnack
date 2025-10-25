@@ -22,6 +22,7 @@ import {
   DollarSign,
   Users,
 } from 'lucide-react';
+import { LegalDocumentsSection } from '@/components/core/legal-documents';
 
 // Varian animasi standar untuk 'fade-in-up' saat scroll
 const FADE_IN_UP_VARIANT = {
@@ -163,31 +164,8 @@ export default function AboutPage() {
   return (
     <div className="relative bg-gradient-to-b from-background via-blue-50/20 to-background overflow-hidden">
       {' '}
-      {/* Latar Belakang Gradient Halus */}
-      {/* Noise Texture Konsisten */}
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 opacity-[0.02]" // Opacity dikurangi
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>\")", // Frekuensi diubah
-        }}
-      />
-      {/* ===== 1. Bagian Hero ===== */}
-      {/* Efek Aurora Halus di Latar Belakang */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
-      >
-        <div
-          className="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#80caff] to-[#4f46e5] opacity-20 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
-          style={{
-            clipPath:
-              'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-          }}
-        />
-      </div>
       <PageHeader
+        backgroundImageUrl="/images/sosnackbg.svg"
         badgeText="Tentang Kami"
         title="Mewujudkan Gaya Baru Produk Lokal."
         description="So Snack lebih dari sekadar rasa. Kami adalah manifestasi semangat, kreativitas, dan bukti nyata bahwa camilan lokal dapat tampil modern, relevan, dan beresonansi dengan gaya hidup Gen Z."
@@ -229,7 +207,7 @@ export default function AboutPage() {
             {/* Gambar Ditingkatkan */}
             <motion.div
               variants={FADE_IN_UP_VARIANT}
-              className="w-full aspect-[4/3] lg:aspect-square rounded-2xl shadow-2xl overflow-hidden group border-4 border-white/50" // Aspect ratio & border
+              className="w-full aspect-square rounded-2xl shadow-2xl overflow-hidden group border-4 border-white/50" // Aspect ratio & border
             >
               <Image
                 src="/images/tentang.svg"
@@ -489,6 +467,10 @@ export default function AboutPage() {
           </div>
         </div>
       </motion.section>
+
+      {/* ===== 4. Bagian Legalitas Usaha ===== */}
+      <LegalDocumentsSection />
+
       {/* ===== 5. Bagian CTA Penutup ===== */}
       <motion.section
         className="py-24 md:py-32 bg-gradient-to-t from-primary/10 to-transparent" // Gradient lagi

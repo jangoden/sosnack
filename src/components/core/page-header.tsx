@@ -1,14 +1,15 @@
 import React from 'react';
-import { motion } from 'framer-motion'; // Re-added
+import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 
 interface PageHeaderProps {
   badgeText?: string;
   title: string;
   description: string;
+  backgroundImageUrl?: string; // Prop baru
 }
 
-const FADE_IN_UP_VARIANT = { // Re-added
+const FADE_IN_UP_VARIANT = {
   hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
@@ -17,17 +18,20 @@ const FADE_IN_UP_VARIANT = { // Re-added
   },
 };
 
-export const PageHeader: React.FC<PageHeaderProps> = ({ badgeText, title, description }) => {
+export const PageHeader: React.FC<PageHeaderProps> = ({ badgeText, title, description, backgroundImageUrl }) => {
+  // Fallback ke gambar default jika prop tidak disediakan
+  const bgImage = backgroundImageUrl || '/images/bgabout.svg';
+
   return (
     <motion.section
-      className="relative pt-36 pb-28 md:pt-48 md:pb-36 text-center isolate bg-cover bg-center" // Removed bg-red-500, added bg-cover bg-center
-      style={{ backgroundImage: 'url("/images/bgabout.svg")' }} // Added background image
-      initial="hidden" // Re-added
-      animate="visible" // Re-added
-      variants={FADE_IN_UP_VARIANT} // Re-added
+      className="relative pt-36 pb-28 md:pt-48 md:pb-36 text-center isolate bg-cover bg-center"
+      style={{ backgroundImage: `url("${bgImage}")` }} // Menggunakan variabel bgImage
+      initial="hidden"
+      animate="visible"
+      variants={FADE_IN_UP_VARIANT}
     >
-      {/* Optional: Add an overlay for better text readability, similar to youtube section */}
-      <div className="absolute inset-0 bg-white opacity-50"></div> {/* Changed to bg-white */}
+      {/* Overlay untuk keterbacaan teks */}
+      <div className="absolute inset-0 bg-white opacity-70"></div>
 
       <div className="container px-4 md:px-6 relative z-10">
         {badgeText && (
@@ -38,10 +42,10 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ badgeText, title, descri
             {badgeText}
           </Badge>
         )}
-        <h1 className="mt-6 text-4xl font-bold font-headline tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-primary leading-tight"> {/* Reverted to text-primary */}
+        <h1 className="mt-6 text-4xl font-bold font-headline tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-primary leading-tight">
           {title}
         </h1>
-        <p className="mt-8 max-w-3xl mx-auto text-lg md:text-xl text-primary leading-relaxed"> {/* Changed to text-primary */}
+        <p className="mt-8 max-w-3xl mx-auto text-lg md:text-xl text-primary leading-relaxed">
           {description}
         </p>
       </div>
