@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
@@ -31,7 +32,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ badgeText, title, descri
       variants={FADE_IN_UP_VARIANT}
     >
       {/* Overlay untuk keterbacaan teks */}
-      <div className="absolute inset-0 bg-white opacity-70"></div>
+      <div className="absolute inset-0 bg-white opacity-50"></div>
 
       <div className="container px-4 md:px-6 relative z-10">
         {badgeText && (

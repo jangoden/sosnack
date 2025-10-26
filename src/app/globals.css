@@ -57,16 +57,4 @@
   }
 }
 
-@layer utilities {
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-  .animate-scroll {
-    animation: scroll 20s linear infinite;
-  }
-}
+

@@ -16,7 +16,7 @@ const navLinks: NavItem[] = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Products', href: '/products' },
-  { name: 'Values', href: '/values' },
+  { name: 'Partnership', href: '/partnership' },
 ];
 
 export function Navbar() {

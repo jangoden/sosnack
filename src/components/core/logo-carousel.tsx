@@ -18,10 +18,15 @@ export function LogoCarousel() {
     <div className="py-12">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">Our Quality Assurance</h2>
-        <div className="relative w-full overflow-hidden">
-          <div className="flex animate-scroll">
+        <div
+          className="relative w-full overflow-hidden"
+          style={{
+            maskImage: "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
+          }}
+        >
+          <div className="flex w-max animate-marquee">
             {[...logos, ...logos].map((logo, index) => (
-              <div key={index} className="flex-shrink-0 mx-4" style={{ minWidth: '150px' }}>
+              <div key={index} className="flex-shrink-0 mx-8" style={{ minWidth: '150px' }}>
                 <Image
                   src={logo.src}
                   alt={logo.alt}

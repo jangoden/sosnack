@@ -30,19 +30,18 @@ const HeroText = ({ variants }: { variants: any }) => (
     </h1>
 
     <p className="mx-auto mt-6 max-w-xl text-sm leading-6 text-gray-600 sm:mx-0 sm:mt-8 sm:text-lg sm:leading-8">
-      So Snack is more than just a local snack it’s a style statement. Made from authentic Indonesian flavors and wrapped in modern, Gen Z-approved packaging, So Snack brings bold taste and bold vibes in every bite.
-      It’s proudly local, effortlessly stylish, and ready to go wherever you go.
+      So Snack is more than just a local snack  it’s a lifestyle statement. With authentic Indonesian flavors and modern packaging loved by Gen Z, So Snack delivers bold taste and cool style in every bite. It embodies modern local pride stylish, contemporary, and effortlessly portable wherever you go.
     </p>
 
-    <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:justify-start">
+    <div className="mt-8 flex flex-row items-center justify-center gap-4 sm:justify-start">
       <Link
         href="/products"
         className={`
-          group relative inline-flex w-full items-center justify-center 
-          gap-2 overflow-hidden rounded-lg bg-accent px-6 py-2.5 
-          text-base font-bold text-accent-foreground shadow-lg shadow-accent/30 
-          transition-all duration-300 hover:scale-105 hover:bg-accent/90 
-          hover:shadow-xl hover:shadow-accent/40 sm:w-auto sm:px-8 sm:py-3 sm:text-lg
+          group relative inline-flex items-center justify-center 
+          gap-2 overflow-hidden rounded-lg bg-primary px-6 py-2.5 
+          text-base font-bold text-primary-foreground shadow-lg shadow-primary/30 
+          transition-all duration-300 hover:scale-105 hover:bg-primary/90 
+          hover:shadow-xl hover:shadow-primary/40 sm:w-auto sm:px-8 sm:py-3 sm:text-lg
         `}
       >
         <span className="absolute left-0 top-0 h-full w-0 bg-white/20 transition-all duration-500 group-hover:w-full" />
@@ -55,7 +54,7 @@ const HeroText = ({ variants }: { variants: any }) => (
       <Link
         href="/contact"
         className={`
-          group relative inline-flex w-full items-center 
+          group relative inline-flex items-center 
           justify-center gap-2 rounded-lg border-2 border-primary 
           bg-transparent px-6 py-2.5 text-base font-bold text-primary 
           transition-all duration-300 hover:scale-105 hover:bg-primary/10 
@@ -84,10 +83,10 @@ const HeroImage = ({ variants }: { variants: any }) => (
       }}
     />
     <Image
-      src="/images/orang.svg"
+      src="/images/orang.webp"
       alt="Person enjoying snack"
-      width={600}
-      height={100}
+      width={900}
+      height={500}
       className="object-contain drop-shadow-lg"
       priority
     />
@@ -137,7 +136,7 @@ export function HeroSection() {
       />
 
       {/* Main Content */}
-      <div className="container relative z-10 mx-auto grid grid-cols-1 items-center gap-y-10 px-4 pt-20 pb-16 sm:px-6 sm:pt-24 lg:grid-cols-2 lg:items-end lg:gap-x-16 lg:px-8 lg:pt-32">
+      <div className="container relative z-10 mx-auto grid grid-cols-1 items-center gap-y-10 px-4 pt-32 pb-16 sm:px-6 sm:pt-24 lg:grid-cols-2 lg:items-end lg:gap-x-16 lg:px-8 lg:pt-32">
         
         <HeroText variants={fromLeftVariant} />
         <HeroImage variants={fromRightVariant} />

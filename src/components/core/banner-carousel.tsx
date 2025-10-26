@@ -4,22 +4,16 @@ import Image from 'next/image';
 import Slider from 'react-slick';
 import { motion } from 'framer-motion';
 
-// Import slick-carousel styles if not already globally available
-// In this project, they are imported in `products/page.tsx`, which is not ideal.
-// For a robust setup, these should be in `_app.tsx` or a root layout.
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 const bannerImages = [
-  '/images/banner1.svg',
-  '/images/banner2.svg',
-  '/images/banner3.svg',
-  '/images/banner4.svg',
-  '/images/banner5.svg',
-  '/images/banner6.svg',
-  '/images/banner7.svg',
-  '/images/banner8.svg',
-  '/images/banner9.svg',
+  '/images/banner1.webp',
+  '/images/banner2.webp',
+  '/images/banner3.webp',
+  '/images/banner4.webp',
+  '/images/banner5.webp',
+  '/images/banner6.webp',
+  '/images/banner7.webp',
+  '/images/banner8.webp',
+  '/images/banner9.webp',
 ];
 
 const FADE_IN_VARIANT = {
@@ -52,12 +46,12 @@ export const BannerCarousel = () => {
       <div className="container px-4 md:px-6">
         <Slider {...settings}>
           {bannerImages.map((src, index) => (
-            <div key={index} className="w-full h-auto aspect-video rounded-xl overflow-hidden">
+            <div key={index} className="relative w-full h-auto aspect-video rounded-xl overflow-hidden">
               <Image
                 src={src}
                 alt={`Banner ${index + 1}`}
-                layout="fill"
-                objectFit="contain"
+                fill
+                style={{ objectFit: 'contain' }}
                 className="transition-transform duration-500 ease-in-out group-hover:scale-105"
                 priority={index === 0} // Prioritize loading the first banner
               />
