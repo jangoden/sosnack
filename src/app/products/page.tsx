@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Card } from '@/components/ui/card';
 import { PageHeader } from '@/components/core/page-header';
 import { motion } from 'framer-motion';
+import { FADE_IN_UP_VARIANT } from '@/lib/animations';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Download, Package, Weight } from 'lucide-react'; // Import ikon baru
@@ -20,36 +21,36 @@ import {
 // --- Data Produk Baru ---
 const allProductFiles = [
   // Produk Pouch
-  'basreng-1kg.svg',
-  'miegulungpds-1kg.svg',
-  'miegulungori-1kg.svg',
-  'kripcapds-500gram.svg',
-  'kripcaori-500gram.svg',
-  'jengkol-500gram.svg',
-  'siomay-500gram.svg',
-  'citruk-500gram.svg',
-  'mawar-500gram.svg',
-  'opakaci-250-500gram.svg',
-  'seblak-500gram.svg',
+  'basreng-1kg.webp',
+  'miegulungpds-1kg.webp',
+  'miegulungori-1kg.webp',
+  'kripcapds-500gram.webp',
+  'kripcaori-500gram.webp',
+  'jengkol-500gram.webp',
+  'siomay-500gram.webp',
+  'citruk-500gram.webp',
+  'mawar-500gram.webp',
+  'opakaci-250-500gram.webp',
+  'seblak-500gram.webp',
   // Produk Toples Baru
-  'toples-miegulungori-500g.svg',
-  'toples-miegulungpedas-500g.svg',
-  'toples-basrengori-400g.svg',
-  'toples-basrengchilioil-400g.svg',
-  'toples-citrukori-250g.svg',
-  'toples-citrukpedas-250g.svg',
-  'toples-makaroni-350g.svg',
-  'toples-mawarbantat-200g.svg',
-  'toples-seblak-200g.svg',
-  'toples-kripca-200g.svg',
-  'toples-siomay-200g.svg',
-  'toples-seblak-300g.svg',
-  'toples-jengkol-200g.svg',
+  'toples-miegulungori-500g.webp',
+  'toples-miegulungpedas-500g.webp',
+  'toples-basrengori-400g.webp',
+  'toples-basrengchilioil-400g.webp',
+  'toples-citrukori-250g.webp',
+  'toples-citrukpedas-250g.webp',
+  'toples-makaroni-350g.webp',
+  'toples-mawarbantat-200g.webp',
+  'toples-seblak-200g.webp',
+  'toples-kripca-200g.webp',
+  'toples-siomay-200g.webp',
+  'toples-seblak-300g.webp',
+  'toples-jengkol-200g.webp',
 ];
 
 const products = allProductFiles.map((filename) => {
-  const cleanName = filename.replace(/\.svg$/, '');
-  let parts = cleanName.split('-');
+  const cleanName = filename.replace(/\.webp$/, '');
+  const parts = cleanName.split('-');
   
   let packaging = 'Pouch';
   if (parts[0] === 'toples') {
@@ -78,19 +79,9 @@ const products = allProductFiles.map((filename) => {
     name: displayName,
     weight: weight,
     packaging: packaging,
-    imageSrc: `/images/${filename}`,
+    imageSrc: `/images/product/${filename}`,
   };
 });
-
-// --- Varian Animasi ---
-const FADE_IN_UP_VARIANT = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: 'easeInOut' },
-  },
-};
 
 // --- [DIREFAKTOR] Komponen Kartu Produk Grid ---
 const ProductCard = ({

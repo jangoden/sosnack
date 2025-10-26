@@ -17,17 +17,17 @@ const bestSellerProducts = [
   {
     id: 'best-basreng',
     title: 'Basreng Pedas Daun Jeruk',
-    imageUrl: '/images/best-basreng.svg',
+    imageUrl: '/images/best-basreng.webp',
   },
   {
     id: 'best-miegulung',
     title: 'Mie Gulung Pedas',
-    imageUrl: '/images/best-miegulung.svg',
+    imageUrl: '/images/best-miegulung.webp',
   },
   {
     id: 'best-makaroni',
     title: 'Makaroni Bantet Chili Oil',
-    imageUrl: '/images/best-makaroni.svg',
+    imageUrl: '/images/best-makaroni.webp',
   },
 ];
 

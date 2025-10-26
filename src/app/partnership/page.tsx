@@ -22,6 +22,8 @@ import {
 } from "@/components/ui/card";
 import { PageHeader } from "@/components/core/page-header";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { FADE_IN_UP_VARIANT } from "@/lib/animations";
 import { cn } from "@/lib/utils";
 
 const partnershipOpportunities = [
@@ -83,15 +85,6 @@ const resellerFlowSteps = [
     description: "Pengiriman testimoni & konten.",
   },
 ];
-
-const FADE_IN_UP_VARIANT = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeInOut" },
-  },
-};
 
 export default function PartnershipPage() {
   return (
@@ -175,16 +168,12 @@ export default function PartnershipPage() {
             transition={{ staggerChildren: 0.2 }}
           >
             {/* Kolom Kiri: Gambar */}
-            <motion.div variants={FADE_IN_UP_VARIANT} className="relative">
-              {/* CATATAN: 
-                Ganti 'src' di bawah ini dengan path ke gambar Anda. 
-                Saya sarankan menggunakan gambar yang sudah Anda unggah.
-                Contoh: /images/sosnack-pengiriman.png
-              */}
-              <img
-                src="/images/pengiriman.webp" // <-- GANTI PATH GAMBAR INI
+            <motion.div variants={FADE_IN_UP_VARIANT} className="relative aspect-video">
+              <Image
+                src="/images/pengiriman.webp"
                 alt="Pengiriman SO SNACK Seluruh Indonesia"
-                className="rounded-xl shadow-xl object-contain w-full h-auto"
+                fill
+                className="rounded-xl shadow-xl object-contain"
               />
             </motion.div>
 

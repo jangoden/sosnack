@@ -15,7 +15,6 @@ import {
   Instagram,
   MessageCircle, // Menggantikan ikon TikTok
   Facebook,
-  QrCode,
   // --- ICON BARU UNTUK PEMBAYARAN ---
   Landmark,
   Wallet,

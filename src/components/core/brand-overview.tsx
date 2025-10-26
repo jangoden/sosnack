@@ -2,9 +2,10 @@
 
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card'; // Kita gunakan Card bawaan
-import { motion, Variants } from 'framer-motion'; // Tambahkan Variants di sini
+import { motion } from 'framer-motion'; // Tambahkan Variants di sini
 import { Leaf, Sparkles, ShieldCheck, Award } from 'lucide-react';
 import { cn } from '@/lib/utils'; // Import cn
+import { FADE_IN_UP_VARIANT } from '@/lib/animations'; // Import FADE_IN_UP_VARIANT
 
 // Fitur tetap sama
 const features = [
@@ -30,16 +31,6 @@ const features = [
     description: 'Sudah bersertifikat Halal MUI, tanpa ragu.',
   },
 ];
-
-// Varian animasi tetap sama
-const FADE_IN_UP_VARIANT = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeInOut' },
-  },
-};
 
 export function BrandOverview() {
   return (

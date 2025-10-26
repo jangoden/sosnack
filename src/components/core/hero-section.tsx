@@ -2,11 +2,11 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { fromLeftVariant, fromRightVariant } from '@/lib/animations';
 
 
-const HeroText = ({ variants }: { variants: any }) => (
+const HeroText = ({ variants }: { variants: Variants }) => (
   <motion.div
     className="flex flex-col justify-center text-center sm:text-left"
     variants={variants}
@@ -67,7 +67,7 @@ const HeroText = ({ variants }: { variants: any }) => (
   </motion.div>
 );
 
-const HeroImage = ({ variants }: { variants: any }) => (
+const HeroImage = ({ variants }: { variants: Variants }) => (
   <motion.div
     className="relative mx-auto mt-12 flex w-full max-w-[420px] items-center justify-center lg:mt-0"
     variants={variants}

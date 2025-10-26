@@ -16,10 +16,7 @@ const bannerImages = [
   '/images/banner9.webp',
 ];
 
-const FADE_IN_VARIANT = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.8, ease: 'easeInOut' } },
-};
+import { FADE_IN_VARIANT } from '@/lib/animations';
 
 export const BannerCarousel = () => {
   const settings = {

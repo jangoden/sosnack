@@ -7,32 +7,21 @@ import { Card } from '@/components/ui/card';
 import { PageHeader } from '@/components/core/page-header';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import { FADE_IN_UP_VARIANT } from '@/lib/animations';
 import { cn } from '@/lib/utils';
 import {
   Award,
   Check,
   Flame,
   Globe,
-  Heart,
   Lightbulb,
   Sparkles,
   Target,
   ArrowRight,
   Briefcase,
-  DollarSign,
   Users,
 } from 'lucide-react';
 import { LegalDocumentsSection } from '@/components/core/legal-documents';
-
-// Varian animasi standar untuk 'fade-in-up' saat scroll
-const FADE_IN_UP_VARIANT = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeInOut' },
-  },
-};
 
 // Komponen helper untuk list dengan ikon centang (ditingkatkan)
 // Sekarang menangani status group-hover secara internal

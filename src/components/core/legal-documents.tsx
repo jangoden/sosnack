@@ -5,17 +5,8 @@ import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
+import { FADE_IN_UP_VARIANT } from '@/lib/animations';
 import { ShieldCheck } from 'lucide-react';
-
-// Varian animasi standar untuk 'fade-in-up' saat scroll
-const FADE_IN_UP_VARIANT = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeInOut' },
-  },
-};
 
 // Komponen untuk satu kartu dokumen
 const DocumentCard = ({

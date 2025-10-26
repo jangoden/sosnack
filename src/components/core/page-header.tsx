@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FADE_IN_UP_VARIANT } from '@/lib/animations';
 import { Badge } from '@/components/ui/badge';
 
 interface PageHeaderProps {
@@ -9,15 +10,6 @@ interface PageHeaderProps {
   description: string;
   backgroundImageUrl?: string; // Prop baru
 }
-
-const FADE_IN_UP_VARIANT = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeInOut' },
-  },
-};
 
 export const PageHeader: React.FC<PageHeaderProps> = ({ badgeText, title, description, backgroundImageUrl }) => {
   // Fallback ke gambar default jika prop tidak disediakan
