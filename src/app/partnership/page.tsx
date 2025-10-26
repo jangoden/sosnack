@@ -168,12 +168,12 @@ export default function PartnershipPage() {
             transition={{ staggerChildren: 0.2 }}
           >
             {/* Kolom Kiri: Gambar */}
-            <motion.div variants={FADE_IN_UP_VARIANT} className="relative aspect-video">
+            <motion.div variants={FADE_IN_UP_VARIANT} className="relative aspect-square">
               <Image
                 src="/images/pengiriman.webp"
                 alt="Pengiriman SO SNACK Seluruh Indonesia"
                 fill
-                className="rounded-xl shadow-xl object-contain"
+                className="rounded-xl shadow-xl object-cover"
               />
             </motion.div>
 
