@@ -83,12 +83,11 @@ const HeroImage = ({ variants }: { variants: Variants }) => (
       }}
     />
     <Image
-      src="/images/orang.webp"
-      alt="Person enjoying snack"
+      src="/images/bghero.svg"
+      alt="SoSnack hero background"
       width={900}
       height={500}
       className="object-contain drop-shadow-lg"
-      priority
     />
   </motion.div>
 );
