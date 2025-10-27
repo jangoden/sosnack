@@ -14,6 +14,7 @@ const bannerImages = [
   '/images/banner7.webp',
   '/images/banner8.webp',
   '/images/banner9.webp',
+  '/images/preview.webp',
 ];
 
 import { FADE_IN_VARIANT } from '@/lib/animations';

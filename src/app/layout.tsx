@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: 'SoSnack',
     images: [
       {
-        url: '/images/banner1.webp', // Must be an absolute URL
+        url: '/images/preview.webp', // Must be an absolute URL
         width: 1200,
         height: 630,
         alt: 'Promotional Banner for SoSnack',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'SoSnack - Camilan Lokal, Gaya Modern',
     description: 'Camilan lokal dengan cita rasa otentik dan kemasan modern.',
-    images: ['/images/banner1.webp'],
+    images: ['/images/preview.webp'],
   },
 };
 
